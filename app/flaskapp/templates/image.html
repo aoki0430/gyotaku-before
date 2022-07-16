@@ -18,9 +18,12 @@
 
 <h1>Gyotaku</h1>
 <h3>This page enables you to make gyotaku from your pic.</h3>
-<form action="/image" method="get">
-    <input type="submit" value='next!'>
-  </form>
+{% if error_message %}
+<p style="color: red;">{{ error_message }}</p>
+{% endif %}
+{% if success_message %}
+    <p style="color: blue;">{{ success_message }}</p>
+{% endif %}
 
 <!-- コンテンツを配置 -->
 

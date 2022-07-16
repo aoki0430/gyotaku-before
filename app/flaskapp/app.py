@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, abort
+# from pythoch
 # import base64
 # import tempfile
 # from PIL import Image
@@ -8,6 +9,19 @@ from flask import Flask, render_template, request, redirect, url_for, abort
 # from mlmodel.test import cycle_gan
 
 app = Flask(__name__)
+
+MODEL_FILE = 'horse2zebra.t7'
+# model = load_model(MODELFILE, compile=False)
+
+# def generate():
+#         fake_B_buffer = ReplayBuffer()
+#         real_img_A = data["A"].to(device)
+#         fake_img_B = netG_A2B(real_img_A)
+#         fake_img_B = fake_B_buffer.push_and_pop(fake_img_B)
+#         grdi_imgs = vutils.make_grid(fake_imgs.detach())
+#         grdi_imgs_arr = grdi_imgs.cpu().numpy()
+#         plt.imshow(np.transpose(grdi_imgs_arr, (1, 2, 0)))
+#         plt.show()
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -38,6 +52,27 @@ def index():
                         
                         # result = "image size {}×{}".format(width, height)
                         # return render_template("index.html", filepath=filepath, result=result, img_data=img_string)
+@app.route("/image", methods=["GET"])
+def plotView():
+        return render_template("image.html", success_message = '画像できたよ')
+#         # Generate plot
+#         fig = Figure()
+#         axis = fig.add_subplot(1, 1, 1)
+#         axis.set_title("title")
+#         axis.set_xlabel("x-axis")
+#         axis.set_ylabel("y-axis")
+#         axis.grid()
+#         axis.plot(range(5), range(5), "ro-")
+        
+#         # Convert plot to PNG image
+#         pngImage = io.BytesIO()
+#         FigureCanvas(fig).print_png(pngImage)
+        
+#         # Encode PNG image to base64 string
+#         pngImageB64String = "data:image/png;base64,"
+#         pngImageB64String += base64.b64encode(pngImage.getvalue()).decode('utf8')
+        
+#         return render_template("image.html", image=pngImageB64String)
 
 if __name__ == "__main__":
         app.run(debug=True, host='0.0.0.0')
