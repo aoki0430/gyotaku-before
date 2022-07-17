@@ -18,10 +18,19 @@
 
 <h1>Gyotaku</h1>
 <h3>This page enables you to make gyotaku from your pic.</h3>
-<form action="/image" method="get">
+<!-- <form action="/image" method="get">
     <input type="submit" value='next!'>
-  </form>
-
+</form> -->
+<form enctype="multipart/form-data">
+    <input type="file" name="img">
+    <button type="submit" formmethod="post">POST</button></p>
+    {% if img_path %}
+    <div>
+    <img src="{{ img_path }}" style="width: 200px;">
+    </div>
+    <p>{{ img_path }}</p>
+    {% endif %}
+</form>
 <!-- コンテンツを配置 -->
 
 <!-- SCRIPTS -->
